@@ -1,8 +1,5 @@
-import React from "react"
+import React from "react";
 
-export default React.createContext();
+const CreateContext = React.createContext();
 
-
-// const Provider = React.createContext()
-// export {Provider}
-// export default Provider;
+export default CreateContext;

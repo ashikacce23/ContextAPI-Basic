@@ -1,116 +1,56 @@
-
 import React from 'react';
-import Context from './Context';
-import Provider from './Provider';
+//context import
+import Context from "./Context";
 
-const AgentBond = () =>{
-    return(
-        <Context.Consumer>
-          {(context)=>( //always use "context". its fixed value
-              <div>
-              <h3>Agent Information</h3>
-               <h4>Mission Name : {context.data.name} </h4>
-               <h3>Mission Status : {context.data.accept} </h3>
-               <button onClick={context.isMissionAccepted} >Accept Mission</button>
-              </div>
-          )}
-        </Context.Consumer>
-    )
-}
-const AgentThree = () =>{
+
+const FinalYear =()=>{
     return(
         <div>
-            <AgentBond />
+            <h1>Another Context API practice.</h1>
+           <Context.Consumer>
+               {(context)=>(
+                 <>
+                   <h2>Student Name : {context.data.name} </h2>
+                   <h2>Educational Institution : {context.data.universityName} </h2>
+                   <h2>Roll Number : {context.data.roll} </h2>
+                   <h2>Present Status : <span style={{color:"red"}}> {context.data.presentStatus} </span> </h2>
+                   <button onClick={context.isPresent}>Give Attendance</button>
+                 </>
+                   
+               )}
+           </Context.Consumer>
         </div>
     )
 }
-const AgentTwo = () =>{
+const ThirdYear =()=>{
     return(
         <div>
-            <AgentThree />
+            <FinalYear />
+        </div>
+    )
+}
+const SecondYear =()=>{
+    return(
+        <div>
+            <ThirdYear />
         </div>
     )
 }
 
-const Agent = () =>{
+const FirstYear =()=>{
     return(
         <div>
-            <AgentTwo />
+            <SecondYear />
         </div>
     )
 }
-
-
 
 const App = () => {
     return (
-        // Provider diye App ke wrap kore nilam
-        <>
-        <h1>Context API Basic Learning.</h1>
-        <Provider>
-            <Agent />
-        </Provider>
-        </>
+        <div>
+            <FirstYear />
+        </div>
     );
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React,{useState} from "react"
-// import './App.css';
-
-
-// const GrandChild = ({brand}) =>{
-//   return(
-//     <div>
-//       <Child value={brand} />
-//     </div>
-//   )
-// }
-
-// const Child = ({value}) =>{
-//   return(
-//     <div>
-//       <h2>Child: {value} </h2>
-//     </div>
-//   )
-// }
-
-
-// const  App =() =>{
-
-//   const [brandname]=useState("Amazon from GrandChild.")
-//   return (
-//     <div className="App">
-//       <GrandChild brand={brandname}/>
-//     </div>
-//   );
-// }
-
-// export default App;

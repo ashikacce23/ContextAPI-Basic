@@ -1,32 +1,29 @@
-import React,{useState} from "react";
+import React, { useState } from 'react';
+//import context
+import createContext from './Context';
 
-//import context from Context.js file
-import PackageContext from "./Context"
-
-//Now create Provider & and provide some value as props to the Children.
-
-// const Provider = (props) =>{
-//     return()
-// }
-const Provider = (props) =>{
-    //what value we want to send is store in useState.
-    const [mission, setMission] = useState({
-        name:"Go to Russia",
-        agent:"09",
-        accept:"Not Accepted"
+const Provider = (props) => {
+    const [present, setPresent] = useState({
+        name:"Ashikur Rahman",
+        roll:"23",
+        universityName:"Islamic University",
+        presentStatus:"Absent"
     })
-    return(
-        <PackageContext.Provider
-        //the stored value is send by a method
-          value={{
-              data:mission,
-              isMissionAccepted: ()=>{
-                  setMission({...mission, accept:"Accepted"})
-              }
-          }}
+    return (
+        <>
+        <createContext.Provider
+           value={{
+               data:present,
+               //method
+               isPresent:()=>{
+                   setPresent({...present, presentStatus:"Present"})
+               }
+           }}
         >
-            {props.children} {/* it is default value */}
-        </PackageContext.Provider>
-    )
-}
+            {props.children}
+        </createContext.Provider>
+        </>
+    );
+};
+
 export default Provider;
